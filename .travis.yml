@@ -5,5 +5,16 @@ python:
 # install:
 #   - pip install -r mysite/requirements.txt
 # command to run tests
-# script:
-#   - pytest
+script:
+  - pytest
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: "Encrypted <access-key-id>=AKIAU3LQ7K7YUAAN425F"
+  secret_access_key:
+    secure: "Encypted <secret-access-key>=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"
+  region: "us-east-1"
+  app: "mysite"
+  env: "django-env"
+  bucket_name: "elasticbeanstalk-us-east-1-333633771505"
