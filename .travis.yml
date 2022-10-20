@@ -4,10 +4,16 @@ python:
   - "3.7"
 # command to install dependencies
 install:
-  - pip install -r mysite/requirements.txt
+  - pip install -r requirements.txt
+
+before_script:
+  - python mysite/manage.py migrate
+
 # command to run tests
 script:
-  - pytest
+  - black --check .
+  - flake8 .
+  - coverage run --source=mysite,polls mysite/manage.py test polls
 
 deploy:
   provider: elasticbeanstalk
@@ -19,3 +25,7 @@ deploy:
   app: "django-setup-tutorial"
   env: "django-env"
   bucket_name: "elasticbeanstalk-us-east-1-333633771505"
+
+
+  after_script:
+  - coveralls
