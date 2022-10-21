@@ -1,7 +1,5 @@
 [flake8]
 
-extend-ignore = F401,
-# H501: Do not use self.__dict__ for string formatting
-H501
+extend-ignore = F401
 
 max-line-length = 88

@@ -12,7 +12,7 @@ before_script:
 # command to run tests
 script:
   - black --check .
-  - flake8 .
+  - flake8 . --append-config .flake8
   - coverage run --source=mysite,polls mysite/manage.py test polls
 
 deploy:
